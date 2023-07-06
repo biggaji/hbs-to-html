@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "target": "es2022",
+    "module": "commonjs",
+    "outDir": "lib",
+    "strict": true,
+    "noImplicitAny": false,
+    "moduleResolution": "Node"
+  },
+  "include": ["index.ts"],
+  "exclude": ["types"]
+}
