@@ -1,6 +1,6 @@
 {
   "name": "hbs-to-html",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "./lib/index.js",
   "repository": "https://github.com/biggaji/hbs-to-html.git",
   "author": "Tobi Ajibade <tobiajibade2017@yandex.com>",
