@@ -3,11 +3,11 @@ Converts a handlebars file with partials or(and) layout to a html file.
 
 
 # Hypothesis
-I built this package specfically because I want an easier way to generate or compile a handlebars file into html code that i could pass to my `nodemailer` html property without having setting up a server e.g(`expressjs`) basicallyjust  because i need to use handlebars as html with nodemailer.
+I built this package specfically because I want an easier way to generate or compile a handlebars file into html code that I could pass to my `nodemailer` html property without having to set up a server e.g(`expressjs`) basically just because I need to use handlebars as html templating engine with nodemailer.
 
 Apart from that most handlebars packages relies on a web server to work, some implementation details are not clear enough lol.
 
-So I need to build a simple package that helps me achieve my goal and offers the same capability as `express-handlebars`, but standalone, doesn't rely on a web server engine to work. IT JUST WORKS.
+So I need to build a simple package that helps me achieve my goal and offers the same capability as `express-handlebars`, but standalone, does not rely on a web server to work. IT JUST WORKS.
 
 # Installation
 
@@ -24,7 +24,7 @@ yarn add hbs-to-html
 The package can be initialized with several options:
 
 ```js
-const HbsToHtml = require("hbs-to-html");
+const { HbsToHtml } = require("hbs-to-html");
 
 const templateConverter = new HbsToHtml({
   templateDirPath: "path/to/views",
@@ -48,7 +48,7 @@ const templateConverter = new HbsToHtml({
   templateDirPath: "path/to/views",
   defaultLayoutFilePath: "path/to/layouts/main.hbs",
   partialDirPath: "path/to/partials",
-  extName: "hbs"
+  extName: "hbs",
 });
 ```
 
@@ -58,9 +58,9 @@ Use the compileToHtml() method available on the templateConverter class instance
 ```js
 const generatedHtml = await templateConverter.compileToHtml({
   templateName: "filename",
-  context: { 
-    //any data you want to pass into the template(s) 
-  }
+
+  //any data you want to pass into the template(s) 
+  context: {},
 });
 ```
 
@@ -123,7 +123,7 @@ Footer partial file
 
 ```js
 const path = require("path");
-const HbsToHtml = require("hbs-to-html");
+const { HbsToHtml } = require("hbs-to-html");
 
 const templateConverter = new HbsToHtml({
   templateDirPath: path.join(__dirname, "views"), //required
@@ -135,7 +135,9 @@ const templateConverter = new HbsToHtml({
 async function generateHtml(filename) {
   const generatedHtml = await templateConverter.compileToHtml({
     templateName: filename,
-    context: { //any data you want to pass into the template(s)
+
+    //any data you want to pass into the template(s)
+    context: {
       year: new Date().getFullYear(),
       title: "Testing package"
     }
@@ -144,7 +146,8 @@ async function generateHtml(filename) {
   return generatedHtml; 
 }
 
-generateHtml("index"); //would return a compile html code with all the template data inserted
+//would return a compile html code with all the template data inserted
+generateHtml("index"); 
 ```
 
 I tested the code using http server, i generated the html code and passed the output to be rendered to the client. Screenshot below:
