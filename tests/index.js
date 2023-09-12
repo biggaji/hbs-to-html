@@ -1,8 +1,8 @@
 const http = require("http");
 const path = require("path");
-const hbstohtml = require("../lib/index");
+const {HbsToHtml} = require('../lib/index');
 
-const hbs = new hbstohtml({
+const hbs = new HbsToHtml({
     templateDirPath: path.join(__dirname, "views"),
     defaultLayoutFilePath: path.join(__dirname, "views", "layouts", "main.hbs"),
     partialDirPath: path.join(__dirname, "views", "partials") 
